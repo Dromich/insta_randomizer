@@ -1,14 +1,14 @@
 {
 
   "manifest_version": 2,
-  "name": "InstaRandomizer",
-  "version": "1.0",
+  "name": "Insta_Giv_Randomizer",
+  "version": "1.1.3",
  
   "description": "Розширення що дозволяє вибрати переможця випадковим чином, працює по коментарях",
   "icons": {
-	"48": "icons/mainicon.png",
-	"128":"icons/mainicon_m.png",
-	"256":"icons/mainicon_b.png"
+	"32": "icons/mainicon.png",
+	"128":"icons/mainicon_b.png",
+	"256":"icons/mainicon_m.png"
   },
   "browser_action": {
 	"default_icon": "icons/mainicon_m.png",

@@ -52,13 +52,18 @@ if (status == null) {
 		return rand;
 	  };
 
-	
+	function getViner() {
+		var viner = koment[randomInteger(1,koment.length)].innerHTML;
+		
+		addTextHTML("viner", viner);
+		
+	}
 
 	function moreComents(init) {
 		var init = init;	
 		if (init=="on") {				
 	
-			setTimeout(eventFire, 3000, mkoment[0], 'click');
+			setTimeout(eventFire, 1000, mkoment[0], 'click');
 			//eventFire(mkoment[0], 'click');
 				
 			}else{
@@ -72,9 +77,15 @@ if (status == null) {
 				console.log(koment[randomInteger(1,koment.length)].innerHTML);				
 				//alert("DONE");
 				var init = "off";
-				dinamik_text("status_msg", "Коментраі завантажено");
-				var viner = koment[randomInteger(1,koment.length)].innerHTML;
-				addTextHTML("viner", viner);
+				dinamik_text("status_msg", "Коментраі завантажено "+koment.length+".штук");
+				setTimeout(dinamik_text, 2000, "status_msg", "Визначаю переможця");
+				setTimeout(dinamik_text, 7000, "status_msg", "Готово");
+				setTimeout(dinamik_text, 7000, "viner", "Переможець");
+				setTimeout(getViner, 7000, );
+
+
+
+				
 
 			} else {
 		

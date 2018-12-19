@@ -1,6 +1,4 @@
-body{
-	background-color: red!important;
-}
+
 #infoblock {
 	width: 30%;
 	padding: 15px;
@@ -12,6 +10,8 @@ body{
 	top: 40%;
 	left: 35%;
 	text-align: center;
+	border-radius: 10px;
+	/* border: 2px solid #333; */
 }
 #status_msg {
 	display: block;
