@@ -1,0 +1,25 @@
+{
+
+  "manifest_version": 2,
+  "name": "InstaRandomizer",
+  "version": "1.0",
+ 
+  "description": "Розширення що дозволяє вибрати переможця випадковим чином, працює по коментарях",
+  "icons": {
+	"48": "icons/mainicon.png",
+	"128":"icons/mainicon_m.png",
+	"256":"icons/mainicon_b.png"
+  },
+  "browser_action": {
+	"default_icon": "icons/mainicon_m.png",
+	"default_title": "InstaRandomizer"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.instagram.com/p/*"],
+      "js": ["random.js"]
+    }
+  ]
+
+}
