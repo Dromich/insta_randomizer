@@ -4,28 +4,23 @@
 * the content script in the page.
 */
 function listenForClicks() {
-
-	
-
 	
 	document.addEventListener("click", (e) => {
 	
 	function bgcomand(tabs) {
 		
 		browser.tabs.sendMessage(tabs[0].id, 
-		{command: "gooBot",			
-		Users:$('#text').val(),
-	//More:JSON.stringify(tabs)
-	
+		{command: "goo"
 	});
-	}
+	
+	};
 	
 	
 	function reset(tabs) {
 		browser.tabs.sendMessage(tabs[0].id, {
 			command: "reset",
 			});
-	}
+	};
 	
 	/**
 	* Just log the error to the console.
@@ -52,6 +47,9 @@ function listenForClicks() {
 	.catch(reportError);
 	}
 	});
+
+
+
 	}
 	
 	

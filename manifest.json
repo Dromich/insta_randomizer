@@ -19,7 +19,8 @@
   "content_scripts": [
     {
 		"matches": ["https://www.instagram.com/*/"],
-      "js": ["contjs/random.js"]
+	  "js": ["contjs/random.js"],
+	  "css":["contjs/main.css"]
     }
   ],
   "permissions": [

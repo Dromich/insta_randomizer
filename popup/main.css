@@ -1,16 +1,16 @@
 html, body {
-	width: 400px;
+	width: 250px;
 	background-color: rgb(70, 68, 68);
 	color: #fff;
 	padding: 10px;
-	overflow: git;
+	overflow: hidden;
 	
   }
   #main_but{
-	  width: 150px;
+	  width: 110px;
 	  display: block;
 	  margin: 20px auto;
-	   color: #fff;
+	color: #fff;
 	  cursor: pointer;
 	  padding: 12px;
 	  text-align: center;

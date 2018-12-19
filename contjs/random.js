@@ -1,20 +1,81 @@
 console.log("IM HEREEEE");
+var koment = document.getElementsByClassName("_6lAjh");
+var mkoment = document.getElementsByClassName("Z4IfV");
+var engine = "off";
+
+
 (function() {
 
-	var koment = document.getElementsByClassName("gElp9");
+	function dinamik_text(div, text) {
+		var node = document.getElementById(div);
+		if (!node) {
+			console.log("No element" + div)
+		} else {
+
+			while (node.firstChild)
+				node.removeChild(node.firstChild);
+			node.appendChild(document.createTextNode("" + text + ""));
+		}
+	};
+	function addTextHTML(div, text) {
+		
+		p1 = document.getElementById(div);
+		p1.insertAdjacentHTML('afterend',text );
+		
+};
+
+
+function insertContent() {
+var status = document.getElementById("infoblock");
+
+if (status == null) {
+	var div = document.createElement('div');
+	div.setAttribute("id", "infoblock");
+	div.innerHTML = `
+	<h1>Giveaway Randomaizer</h1>
+	<div id="status_msg"></div>
+
+	<div id="viner"></div>
+	`;
+	document.body.insertBefore(div, document.body.firstChild);
+	console.log("AddInfoblock");
+	
+}else{
+	console.log("Блок вже є")
+};		
+		
+	};
+
+	function randomInteger(min, max) {
+		var rand = min + Math.random() * (max + 1 - min);
+		rand = Math.floor(rand);
+		return rand;
+	  };
+
+	
 
 	function moreComents(init) {
-		var init = init;
+		var init = init;	
+		if (init=="on") {				
 	
-		var mkoment = document.getElementsByClassName("Z4IfV");
-	
-		function eventFire(el, etype) {
-	
+			setTimeout(eventFire, 3000, mkoment[0], 'click');
+			//eventFire(mkoment[0], 'click');
+				
+			}else{
+				console.log("Клік OFF");
+				//moreComents('off');
+			};
+
+		function eventFire(el, etype) {	
 			if (el == undefined) {
-				console.log("елемент відсутній");
-				moreComents('off');
-				alert("DONE");
-				console.log(koment[22].innerHTML);
+				console.log("елемент відсутній");					
+				console.log(koment[randomInteger(1,koment.length)].innerHTML);				
+				//alert("DONE");
+				var init = "off";
+				dinamik_text("status_msg", "Коментраі завантажено");
+				var viner = koment[randomInteger(1,koment.length)].innerHTML;
+				addTextHTML("viner", viner);
+
 			} else {
 		
 				if (el.fireEvent) {
@@ -34,31 +95,31 @@ console.log("IM HEREEEE");
 			};
 		};
 		
-		if (init=="on") {				
-	
-		setTimeout(eventFire, 1000, mkoment[0], 'click');
-		
 			
-		}else{
-			console.log("Клік OFF")
-		};	
 		
 	};
 	
 
-	function randomInteger(min, max) {
-		var rand = min + Math.random() * (max + 1 - min);
-		rand = Math.floor(rand);
-		return rand;
-	  };
+	function startEngine() {
+		if (engine=="on") {
+			moreComents("on");
+			
+			
+		};
+	}
+
+	
 
 
 
 	browser.runtime.onMessage.addListener((message) => {
-	  if (message.command === "gooBot") {
+	  if (message.command === "goo") {
 		  console.log("STARTTTTT");
-
-		 gitmoreComents("on");
+		  startEngine();
+		  engine = "on";
+		  insertContent();
+		  dinamik_text("status_msg", "Завантажуєм коментарі");
+		 // moreComents("on");
 
 
 		
@@ -70,6 +131,7 @@ console.log("Хард ресет ")
 		
 	  }
 	});
+
 
 	
 
