@@ -12,14 +12,24 @@
   },
   "browser_action": {
 	"default_icon": "icons/mainicon_m.png",
-	"default_title": "InstaRandomizer"
+	"default_title": "InstaRandomizer",
+	"default_popup": "popup/main.html"
   },
 
   "content_scripts": [
     {
-      "matches": ["*://*.instagram.com/p/*"],
-      "js": ["random.js"]
+		"matches": ["https://www.instagram.com/*/"],
+      "js": ["contjs/random.js"]
     }
-  ]
+  ],
+  "permissions": [
+	"tabs",
+	"<all_urls>",
+	"webRequest",
+	"webRequestBlocking",
+	"webNavigation",
+	"storage",
+	"contextMenus"
+]
 
 }
