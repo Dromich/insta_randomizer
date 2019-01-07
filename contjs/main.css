@@ -7,7 +7,7 @@
 	position: absolute;
 	display: block;
 	z-index: 9999999999;
-	top: 75%;
+	top: 5%;
 	left: 35%;
 	text-align: center;
 	border-radius: 10px;
@@ -35,12 +35,12 @@
 }
 #infoblock a {
 	color: red;
-	font-size: 1.6rem;
+	/*font-size: 1.6rem;
 	padding: 15px;
 	text-align: center;
-	/* width: 100%; */
+	 width: 100%;
 	display: block;
-	margin: 15px auto;
+	margin: 15px auto */;
 }
 #viner {
 	text-transform: uppercase;
@@ -60,6 +60,23 @@
 	margin: 0 !important;
 	padding: 5px !important;
 }
+
 .user_coment h3 {
 	display: none !important;
+}
+#user_more_coment h3 {
+	display: none;
+}
+#user_more_coment {
+	width: 100%;
+	display: block;
+	padding: 0;
+	margin: 0;
+	/* border: 1px solid red; */
+}
+#user_more_coment span {
+	display: block;
+	border-top: 1.6px solid #d2d1d1cc;
+	/* padding-top: 10px; */
+	margin-top: 15px;
 }

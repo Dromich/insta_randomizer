@@ -1,6 +1,7 @@
 console.log("IM HEREEEE");
 var koment = document.getElementsByClassName("_6lAjh");
 var mkoment = document.getElementsByClassName("Z4IfV");
+ 
 var engine = "off";
 
 
@@ -13,19 +14,34 @@ var engine = "off";
 		var viner_name = viner.innerText;
 		console.log(viner_name);
 		var viner_coment = viner.parentElement.innerHTML;
+
+		var vinerMoreComents =[];
+
+		for (let index = 0; index < koment.length; index++) {
+			if(koment[index].innerText === viner_name ){ 
+
+				vinerMoreComents.push(koment[index].parentElement.innerHTML);
+				console.log('Коментарів переможця '+vinerMoreComents.length);
+				 
+			}
+			
+		}
 		
-		getUserInfo(viner_name,viner_coment);
+		getUserInfo(viner_name,viner_coment,vinerMoreComents);
 		
 	};
 
-function getUserInfo(username,userComent) {
+function getUserInfo(username,userComent,userMoreComents) {
+
+
+
 	console.log("Try GET User info - " + username);
 		var xmlhttp;
 		xmlhttp = new XMLHttpRequest();
 		xmlhttp.onreadystatechange = function() {
 			if (xmlhttp.readyState == 4) {
 				var infoo = JSON.parse(xmlhttp.responseText);
-				console.log(infoo.graphql.user.profile_pic_url_hd);	
+				//console.log(infoo.graphql.user.profile_pic_url_hd);	
 				
 				var viner_pic = infoo.graphql.user.profile_pic_url_hd;
 				
@@ -51,9 +67,23 @@ function getUserInfo(username,userComent) {
 		</header>	
 		<h5>Коментар переможця</h5>
 		<div class="user_coment">${userComent}</div>
+
+		<div id="user_more_coment">
+		
+		</div>
 			`
 			console.log('Get Viner done');
 			addTextHTML("viner", vinerHTML);
+
+			if (userMoreComents.length > 0) {
+
+				for (let index = 0; index < userMoreComents.length; index++) {
+
+					addInnTextHTML("user_more_coment", userMoreComents[index]);
+					
+				}
+				
+			}
 
 			}else(
 				console.log("Status: "+ xmlhttp.readyState )
@@ -84,6 +114,12 @@ function getUserInfo(username,userComent) {
 		p1.insertAdjacentHTML('afterend',text );
 		
 };
+function addInnTextHTML(div, text) {
+		
+	p1 = document.getElementById(div);
+	p1.insertAdjacentHTML('afterbegin',text );
+	
+};
 
 
 function insertContent() {
@@ -94,7 +130,10 @@ if (status == null) {
 	div.setAttribute("id", "infoblock");
 	div.innerHTML = `
 	<h1>Giveaway Randomaizer</h1>
-	<div id="status_msg"></div>
+	<span id="load_count"></span>
+	<div id="status_msg">
+	
+	</div>
 
 	<div id="viner">
 	
@@ -118,16 +157,29 @@ if (status == null) {
 
 
 	function moreComents(init) {
+		var load_proces = document.getElementsByClassName("zKxRE");
+		console.log('Визвало MoREComents');
+		dinamik_text("load_count", koment.length);
 		var init = init;	
-		if (init=="on") {				
-	
-			setTimeout(eventFire, 1000, mkoment[0], 'click');
-			//eventFire(mkoment[0], 'click');
+		if (init=="on") {	
+			
+			if (load_proces.length === 0) {
+				console.log('Прогрузило клікаю далі');
+				setTimeout(eventFire, 1500, mkoment[0], 'click');
+				
+			}else{
+				console.log('Грузить коменти');
+				console.log(load_proces.length);
+				setTimeout(moreComents, 2500, 'on');
+				
+			};
 				
 			}else{
 				console.log("Клік OFF");
 				//moreComents('off');
 			};
+
+
 
 		function eventFire(el, etype) {	
 			if (el == undefined) {
