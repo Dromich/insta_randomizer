@@ -1,11 +1,12 @@
 console.log("IM HEREEEE");
 var koment = document.getElementsByClassName("_6lAjh");
 var mkoment = document.getElementsByClassName("Z4IfV");
-
 var engine = "off";
 
 
 (function () {
+
+	
 
 	function getViner() {
 		console.log('Try Get Viner start');
@@ -119,7 +120,16 @@ var engine = "off";
 
 	};
 
+	function RemInfoblock() {
+		var div = document.getElementById("infoblock");
+		if (!div) {
+			console.log("Інфоблока вже нема")
+		} else {
+			document.body.removeChild(div);
+			console.log("RemInfoblock");
+		};
 
+	};
 	function insertContent() {
 		var status = document.getElementById("infoblock");
 
@@ -127,6 +137,7 @@ var engine = "off";
 			var div = document.createElement('div');
 			div.setAttribute("id", "infoblock");
 			div.innerHTML = `
+			<!--div id="close">X</div-->
 	<h1>Giveaway Randomaizer</h1>
 	<span id="load_count"></span>
 	<div id="status_msg"></div>
@@ -228,7 +239,14 @@ var engine = "off";
 
 
 		} else if (message.command === "reset") {
+			console.log('Команда ресет пробую оновити преможця')
+			getViner()
 
+
+		}else if (message.command === "close") {
+			RemInfoblock();
+			
+			//document.location.reload(true);
 			console.log("Хард ресет ")
 
 

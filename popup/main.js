@@ -21,6 +21,11 @@ function listenForClicks() {
 			command: "reset",
 			});
 	};
+	function close(tabs) {
+		browser.tabs.sendMessage(tabs[0].id, {
+			command: "close",
+			});
+	};
 	
 	/**
 	* Just log the error to the console.
@@ -46,6 +51,11 @@ function listenForClicks() {
 	.then(reset)
 	.catch(reportError);
 	}
+	else if (e.target.classList.contains("close")) {
+		browser.tabs.query({active: true, currentWindow: true})
+		.then(close)
+		.catch(reportError);
+		}
 	});
 
 

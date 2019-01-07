@@ -80,3 +80,16 @@
 	/* padding-top: 10px; */
 	margin-top: 15px;
 }
+#close {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	border: 1px solid red;
+	padding: 3.5px;
+	border-radius: 50%;
+	font-weight: 600;
+	color: red;
+	width: 25px;
+	height: 25px;
+	cursor: pointer;
+}
