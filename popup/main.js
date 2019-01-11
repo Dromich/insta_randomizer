@@ -1,31 +1,28 @@
-
-/**
-* Listen for clicks on the buttons, and send the appropriate message to
-* the content script in the page.
-*/
 function listenForClicks() {
 	
 	document.addEventListener("click", (e) => {
 	
-	function bgcomand(tabs) {
-		
-		browser.tabs.sendMessage(tabs[0].id, 
-		{command: "goo"
-	});
-	
-	};
-	
-	
-	function reset(tabs) {
-		browser.tabs.sendMessage(tabs[0].id, {
-			command: "reset",
+		function bgcomand(tabs) {
+
+			browser.tabs.sendMessage(tabs[0].id,
+				{
+					command: "goo"
+				});
+
+		};
+
+
+		function reset(tabs) {
+			browser.tabs.sendMessage(tabs[0].id, {
+				command: "reset",
 			});
-	};
-	function close(tabs) {
-		browser.tabs.sendMessage(tabs[0].id, {
-			command: "close",
+		};
+
+		function close(tabs) {
+			browser.tabs.sendMessage(tabs[0].id, {
+				command: "close",
 			});
-	};
+		};
 	
 	/**
 	* Just log the error to the console.
@@ -34,24 +31,20 @@ function listenForClicks() {
 	console.error(`Помилка функції: ${error}`);
 	}
 	
-	/**
-	* Перевіряєм клас кнопки і залежно від цього шлемо проміс 
 	
-	*/
 	
 	
 	
 	if (e.target.classList.contains("start")) {
+
 	browser.tabs.query({active: true, currentWindow: true})
 	.then(bgcomand)
 	.catch(reportError);
-	}
-	else if (e.target.classList.contains("reset")) {
+	}else if (e.target.classList.contains("reset")) {
 	browser.tabs.query({active: true, currentWindow: true})
 	.then(reset)
 	.catch(reportError);
-	}
-	else if (e.target.classList.contains("close")) {
+	}else  {
 		browser.tabs.query({active: true, currentWindow: true})
 		.then(close)
 		.catch(reportError);
@@ -60,7 +53,7 @@ function listenForClicks() {
 
 
 
-	}
+	};
 	
 	
 	function reportExecuteScriptError(error) {

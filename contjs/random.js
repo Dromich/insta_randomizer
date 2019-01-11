@@ -2,6 +2,7 @@ console.log("IM HEREEEE");
 var koment = document.getElementsByClassName("_6lAjh");
 var mkoment = document.getElementsByClassName("Z4IfV");
 var engine = "off";
+var refrech = "off";
 
 
 (function () {
@@ -102,40 +103,29 @@ console.log(more);
 		
 		</div>
 			`
-				console.log('Get Viner done');
+				
 				setTimeout(dinamik_text, 300, "viner", "Переможець");
 
-if (more === "on") {
-	console.log('DIIINAMIKKKKKKKKK')
-	dinamik_HTML("viner", vinerHTML)
-}else{
-	addTextHTML("viner", vinerHTML);
-}
-
-				
+				if (more === "on") {
+					console.log('DIIINAMIKKKKKKKKK')
+					dinamik_HTML("viner_info", vinerHTML)
+				} else {
+					console.log('Simple HTML')
+					addTextHTML("viner_info", vinerHTML);
+				};
 
 
 				if (userMoreComents.length > 1) {
 
-					var node = document.getElementById('user_more_coment');
-		if (!node) {
-			console.log("No element" + div)
-		} else {
-
-			while (node.firstChild)
-				node.removeChild(node.firstChild);
-			
-		}
-
-
 					for (let index = 0; index < userMoreComents.length; index++) {
 
 						addInnTextHTML("user_more_coment", userMoreComents[index]);
-						
+
 
 					}
 
-				}
+				};
+				console.log('Get Viner info DONE !!!!');
 
 			} else (
 				console.log("Status: " + xmlhttp.readyState)
@@ -166,18 +156,17 @@ if (more === "on") {
 		if (!node) {
 			console.log("No element" + div)
 		} else {
-			
+
+			while (node.firstChild)
 				node.removeChild(node.firstChild);
-
-
-			node.insertAdjacentHTML('afterbegin', text);
+				node.insertAdjacentHTML('afterbegin', text);
 		}
 	};
 
 	function addTextHTML(div, text) {
 
 		p1 = document.getElementById(div);
-		p1.insertAdjacentHTML('afterend', text);
+		p1.insertAdjacentHTML('afterbegin', text);
 
 	};
 	function addInnTextHTML(div, text) {
@@ -209,6 +198,7 @@ if (more === "on") {
 	<span id="load_count"></span>
 	<div id="status_msg"></div>
 	<div id="viner"></div>
+	<div id="viner_info"></div>
 	`;
 			document.body.insertBefore(div, document.body.firstChild);
 			
@@ -294,7 +284,11 @@ if (more === "on") {
 		};
 	}
 
-
+	function startMoreViner() {
+		if (refrech == "on") {
+			getMoreViner();
+		};
+	}
 
 	browser.runtime.onMessage.addListener((message) => {
 		if (message.command === "goo") {
@@ -310,8 +304,9 @@ if (more === "on") {
 
 		} else if (message.command === "reset") {
 			console.log('Команда ресет пробую оновити преможця');
-			getMoreViner();
-
+			startMoreViner();
+			refrech = "on";
+			
 
 		}else if (message.command === "close") {
 			RemInfoblock();
