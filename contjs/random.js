@@ -3,6 +3,9 @@ var koment = document.getElementsByClassName("_6lAjh");
 var mkoment = document.getElementsByClassName("Z4IfV");
 var engine = "off";
 var refrech = "off";
+var dialog = document.querySelectorAll('._2dDPU');
+console.log(dialog);
+
 
 
 (function () {
@@ -116,10 +119,12 @@ console.log(more);
 
 
 				if (userMoreComents.length > 1) {
+					morecom = document.getElementById("user_more_coment");
+					morecom.insertAdjacentHTML('beforeend', "<h4>ЩЕ коментарі користувача "+username+"</h4>");					
 
 					for (let index = 0; index < userMoreComents.length; index++) {
 
-						addInnTextHTML("user_more_coment", userMoreComents[index]);
+						addTextHTML("user_more_coment", userMoreComents[index]);
 
 
 					}
@@ -166,15 +171,10 @@ console.log(more);
 	function addTextHTML(div, text) {
 
 		p1 = document.getElementById(div);
-		p1.insertAdjacentHTML('afterbegin', text);
+		p1.insertAdjacentHTML('beforeend', text);
 
 	};
-	function addInnTextHTML(div, text) {
-
-		p1 = document.getElementById(div);
-		p1.insertAdjacentHTML('afterbegin', text);
-
-	};
+	
 
 	function RemInfoblock() {
 		var div = document.getElementById("infoblock");
@@ -189,23 +189,50 @@ console.log(more);
 	function insertContent() {
 		var status = document.getElementById("infoblock");
 
-		if (status == null) {
-			var div = document.createElement('div');
-			div.setAttribute("id", "infoblock");
-			div.innerHTML = `
-			<!--div id="close">X</div-->
-	<h1>Giveaway Randomaizer</h1>
-	<span id="load_count"></span>
-	<div id="status_msg"></div>
-	<div id="viner"></div>
-	<div id="viner_info"></div>
-	`;
-			document.body.insertBefore(div, document.body.firstChild);
+		if (dialog.length > 0) {
+let modalPost = dialog[0];
+if (status == null) {
+				var div = document.createElement('div');
+				div.setAttribute("id", "infoblock");
+				div.innerHTML = `
+				<!--div id="close">X</div-->
+		<h1>Giveaway Randomaizer</h1>
+		<span id="load_count"></span>
+		<div id="status_msg"></div>
+		<div id="viner"></div>
+		<div id="viner_info"></div>
+		`;
+
+		modalPost.appendChild(div);
+				
+				
+	
+			} else {
+				console.log("Screen On")
+			};
+			
+		}else{
 			
 
-		} else {
-			console.log("Screen On")
-		};
+			if (status == null) {
+				var div = document.createElement('div');
+				div.setAttribute("id", "infoblock");
+				div.innerHTML = `
+				<!--div id="close">X</div-->
+		<h1>Giveaway Randomaizer</h1>
+		<span id="load_count"></span>
+		<div id="status_msg"></div>
+		<div id="viner"></div>
+		<div id="viner_info"></div>
+		`;
+				document.body.insertBefore(div, document.body.firstChild);
+				
+	
+			} else {
+				console.log("Screen On")
+			};
+		}
+		
 
 	};
 
