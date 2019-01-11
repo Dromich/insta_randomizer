@@ -10,6 +10,9 @@ var engine = "off";
 
 	function getViner() {
 		console.log('Try Get Viner start');
+
+		setTimeout(dinamik_text, 500, "status_msg", "Визначаю переможця");
+
 		var viner = koment[randomInteger(1, koment.length)];
 
 		var viner_name = viner.innerText;
@@ -25,14 +28,42 @@ var engine = "off";
 			}
 
 		}
-
+console.log('GEt Viner Done');
 		getUserInfo(viner_name, viner_coment, vinerMoreComents);
 
 	};
 
-	function getUserInfo(username, userComent, userMoreComents) {
+
+	function getMoreViner() {
+		console.log('Try Get Viner start');
+		var viner = koment[randomInteger(1, koment.length)];
+
+		var viner_name = viner.innerText;
+
+		console.log(viner_name);
+		var viner_coment = viner.parentElement.innerHTML;
+
+		var vinerMoreComents = [];
+
+		for (let index = 0; index < koment.length; index++) {
+			if (koment[index].innerText === viner_name) {
+				vinerMoreComents.push(koment[index].parentElement.innerHTML);
+
+			}
+
+		}
+
+		getUserInfo(viner_name, viner_coment, vinerMoreComents,"on");
+
+		var vinerMoreComents = [];
+
+	};
 
 
+	function getUserInfo(username, userComent, userMoreComents,more) {
+
+var more = more;
+console.log(more);
 
 		console.log("Try GET User info - " + username);
 		var xmlhttp;
@@ -72,13 +103,35 @@ var engine = "off";
 		</div>
 			`
 				console.log('Get Viner done');
-				addTextHTML("viner", vinerHTML);
+				setTimeout(dinamik_text, 300, "viner", "Переможець");
+
+if (more === "on") {
+	console.log('DIIINAMIKKKKKKKKK')
+	dinamik_HTML("viner", vinerHTML)
+}else{
+	addTextHTML("viner", vinerHTML);
+}
+
+				
+
 
 				if (userMoreComents.length > 1) {
+
+					var node = document.getElementById('user_more_coment');
+		if (!node) {
+			console.log("No element" + div)
+		} else {
+
+			while (node.firstChild)
+				node.removeChild(node.firstChild);
+			
+		}
+
 
 					for (let index = 0; index < userMoreComents.length; index++) {
 
 						addInnTextHTML("user_more_coment", userMoreComents[index]);
+						
 
 					}
 
@@ -107,6 +160,20 @@ var engine = "off";
 			node.appendChild(document.createTextNode("" + text + ""));
 		}
 	};
+
+	function dinamik_HTML(div, text) {
+		var node = document.getElementById(div);
+		if (!node) {
+			console.log("No element" + div)
+		} else {
+			
+				node.removeChild(node.firstChild);
+
+
+			node.insertAdjacentHTML('afterbegin', text);
+		}
+	};
+
 	function addTextHTML(div, text) {
 
 		p1 = document.getElementById(div);
@@ -183,14 +250,13 @@ var engine = "off";
 		function eventFire(el, etype) {
 			if (el == undefined) {
 				console.log("елемент відсутній- або вже всі коменти");
-
-
-				var init = "off";
+				
 				dinamik_text("status_msg", "Коментраі завантажено " + koment.length + ".штук");
-				setTimeout(dinamik_text, 2000, "status_msg", "Визначаю переможця");
-				setTimeout(dinamik_text, 5000, "status_msg", "Готово");
-				setTimeout(dinamik_text, 5000, "viner", "Переможець");
-				setTimeout(getViner, 4000);
+
+							
+				startViner();
+				
+				//setTimeout(getViner, 4000);
 
 			} else {
 
@@ -222,7 +288,11 @@ var engine = "off";
 		};
 	}
 
-
+	function startViner() {
+		if (engine == "on") {
+			getViner();
+		};
+	}
 
 
 
@@ -239,8 +309,8 @@ var engine = "off";
 
 
 		} else if (message.command === "reset") {
-			console.log('Команда ресет пробую оновити преможця')
-			getViner()
+			console.log('Команда ресет пробую оновити преможця');
+			getMoreViner();
 
 
 		}else if (message.command === "close") {
