@@ -4,9 +4,6 @@ var mkoment = document.getElementsByClassName("Z4IfV");
 var engine = "off";
 var refrech = "off";
 var dialog = document.querySelectorAll('._2dDPU');
-console.log(dialog);
-
-
 
 (function () {
 
@@ -50,8 +47,9 @@ console.log('GEt Viner Done');
 		var vinerMoreComents = [];
 
 		for (let index = 0; index < koment.length; index++) {
-			if (koment[index].innerText === viner_name) {
-				vinerMoreComents.push(koment[index].parentElement.innerHTML);
+			if ( koment[index].innerText === viner_name) {
+				vinerMoreComents.push(koment[index].parentElement.innerHTML);		
+								
 
 			}
 
@@ -119,6 +117,7 @@ console.log(more);
 
 
 				if (userMoreComents.length > 1) {
+
 					morecom = document.getElementById("user_more_coment");
 					morecom.insertAdjacentHTML('beforeend', "<h4>ЩЕ коментарі користувача "+username+"</h4>");					
 
@@ -177,12 +176,18 @@ console.log(more);
 	
 
 	function RemInfoblock() {
+		
+
 		var div = document.getElementById("infoblock");
 		if (!div) {
 			console.log("Інфоблока вже нема")
 		} else {
-			document.body.removeChild(div);
-			console.log("RemInfoblock");
+	console.log("Try remove infoblok")
+if (dialog.length>0 ) {
+	dialog[0].removeChild(div);
+}else{
+	document.body.removeChild(div);
+}			
 		};
 
 	};
@@ -338,8 +343,8 @@ if (status == null) {
 		}else if (message.command === "close") {
 			RemInfoblock();
 			
-			//document.location.reload(true);
-			console.log("Хард ресет ")
+			document.location.reload(true);
+			
 
 
 		}
