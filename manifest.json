@@ -17,8 +17,7 @@
   },
 
   "content_scripts": [
-    {
-		"matches": ["https://www.instagram.com/*/"],
+    {"matches": ["https://www.instagram.com/*/"],
 	  "js": ["contjs/random.js"],
 	  "css":["contjs/main.css"]
     }

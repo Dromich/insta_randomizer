@@ -3,6 +3,10 @@ function listenForClicks() {
 	document.addEventListener("click", (e) => {
 	
 		function bgcomand(tabs) {
+			refresh = document.querySelectorAll('#reset_but');
+			box = document.querySelectorAll('#main_but');
+			box[0].classList.add('hidden');
+			refresh[0].classList.remove('hidden');
 
 			browser.tabs.sendMessage(tabs[0].id,
 				{
