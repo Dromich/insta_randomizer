@@ -324,11 +324,19 @@ if (status == null) {
 
 	browser.runtime.onMessage.addListener((message) => {
 		if (message.command === "goo") {
+
+			let urll = window.location.pathname;
+			if (urll.substring(0,3) === '/p/') {
 			console.log("STARTTTTT");
 			startEngine();
 			engine = "on";
 			insertContent();
 			dinamik_text("status_msg", "Завантажуєм коментарі");
+			}else{
+				alert('Щоб почати ви маєте відкрити пост');
+
+			};
+			
 			// moreComents("on");
 
 
