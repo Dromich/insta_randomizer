@@ -44,7 +44,7 @@ console.log('GEt Viner Done');
 		console.log(viner_name);
 		var viner_coment = viner.parentElement.innerHTML;
 
-		var vinerMoreComents = [];
+		let vinerMoreComents = [];
 
 		for (let index = 0; index < koment.length; index++) {
 			if ( koment[index].innerText === viner_name) {
@@ -57,7 +57,7 @@ console.log('GEt Viner Done');
 
 		getUserInfo(viner_name, viner_coment, vinerMoreComents,"on");
 
-		var vinerMoreComents = [];
+		//var vinerMoreComents = [];
 
 	};
 
