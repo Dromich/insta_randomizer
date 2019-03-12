@@ -7,7 +7,7 @@ var dialog = document.querySelectorAll('._2dDPU');
 
 (function () {
 
-	
+
 
 	function getViner() {
 		console.log('Try Get Viner start');
@@ -17,7 +17,7 @@ var dialog = document.querySelectorAll('._2dDPU');
 		var viner = koment[randomInteger(1, koment.length)];
 
 		var viner_name = viner.innerText;
-		
+
 		var viner_coment = viner.parentElement.innerHTML;
 
 		var vinerMoreComents = [];
@@ -29,8 +29,8 @@ var dialog = document.querySelectorAll('._2dDPU');
 			}
 
 		}
-console.log('GEt Viner Done');
-		getUserInfo(viner_name, viner_coment, vinerMoreComents,"on");
+		console.log('GEt Viner Done');
+		getUserInfo(viner_name, viner_coment, vinerMoreComents, "on");
 
 	};
 
@@ -47,25 +47,25 @@ console.log('GEt Viner Done');
 		let vinerMoreComents = [];
 
 		for (let index = 0; index < koment.length; index++) {
-			if ( koment[index].innerText === viner_name) {
-				vinerMoreComents.push(koment[index].parentElement.innerHTML);		
-								
+			if (koment[index].innerText === viner_name) {
+				vinerMoreComents.push(koment[index].parentElement.innerHTML);
+
 
 			}
 
 		}
 
-		getUserInfo(viner_name, viner_coment, vinerMoreComents,"on");
+		getUserInfo(viner_name, viner_coment, vinerMoreComents, "on");
 
-		
+
 
 	};
 
 
-	function getUserInfo(username, userComent, userMoreComents,more) {
+	function getUserInfo(username, userComent, userMoreComents, more) {
 
-var more = more;
-console.log(more);
+		var more = more;
+		console.log(more);
 
 		console.log("Try GET User info - " + username);
 		var xmlhttp;
@@ -104,7 +104,7 @@ console.log(more);
 		
 		</div>
 			`
-				
+
 				setTimeout(dinamik_text, 300, "viner", "Переможець");
 
 				if (more === "on") {
@@ -119,7 +119,7 @@ console.log(more);
 				if (userMoreComents.length > 1) {
 
 					morecom = document.getElementById("user_more_coment");
-					morecom.insertAdjacentHTML('beforeend', "<h4>ЩЕ коментарі користувача "+username+"</h4>");					
+					morecom.insertAdjacentHTML('beforeend', "<h4>ЩЕ коментарі користувача " + username + "</h4>");
 
 					for (let index = 0; index < userMoreComents.length; index++) {
 
@@ -163,7 +163,7 @@ console.log(more);
 
 			while (node.firstChild)
 				node.removeChild(node.firstChild);
-				node.insertAdjacentHTML('afterbegin', text);
+			node.insertAdjacentHTML('afterbegin', text);
 		}
 	};
 
@@ -173,21 +173,21 @@ console.log(more);
 		p1.insertAdjacentHTML('beforeend', text);
 
 	};
-	
+
 
 	function RemInfoblock() {
-		
+
 
 		var div = document.getElementById("infoblock");
 		if (!div) {
 			console.log("Інфоблока вже нема")
 		} else {
-	console.log("Try remove infoblok")
-if (dialog.length>0 ) {
-	dialog[0].removeChild(div);
-}else{
-	document.body.removeChild(div);
-}			
+			console.log("Try remove infoblok")
+			if (dialog.length > 0) {
+				dialog[0].removeChild(div);
+			} else {
+				document.body.removeChild(div);
+			}
 		};
 
 	};
@@ -195,8 +195,8 @@ if (dialog.length>0 ) {
 		var status = document.getElementById("infoblock");
 
 		if (dialog.length > 0) {
-let modalPost = dialog[0];
-if (status == null) {
+			let modalPost = dialog[0];
+			if (status == null) {
 				var div = document.createElement('div');
 				div.setAttribute("id", "infoblock");
 				div.innerHTML = `
@@ -208,16 +208,16 @@ if (status == null) {
 		<div id="viner_info"></div>
 		`;
 
-		modalPost.appendChild(div);
-				
-				
-	
+				modalPost.appendChild(div);
+
+
+
 			} else {
 				console.log("Screen On")
 			};
-			
-		}else{
-			
+
+		} else {
+
 
 			if (status == null) {
 				var div = document.createElement('div');
@@ -231,13 +231,13 @@ if (status == null) {
 		<div id="viner_info"></div>
 		`;
 				document.body.insertBefore(div, document.body.firstChild);
-				
-	
+
+
 			} else {
 				console.log("Screen On")
 			};
 		}
-		
+
 
 	};
 
@@ -251,7 +251,7 @@ if (status == null) {
 
 	function moreComents(init) {
 		var load_proces = document.getElementsByClassName("zKxRE");
-		
+
 		dinamik_text("load_count", koment.length);
 		var init = init;
 		if (init == "on") {
@@ -259,7 +259,7 @@ if (status == null) {
 			if (load_proces.length === 0) {
 				setTimeout(eventFire, 1000, mkoment[0], 'click');
 			} else {
-				console.log('Load Coments');				
+				console.log('Load Coments');
 				setTimeout(moreComents, 2000, 'on');
 
 			};
@@ -272,12 +272,12 @@ if (status == null) {
 		function eventFire(el, etype) {
 			if (el == undefined) {
 				console.log("елемент відсутній- або вже всі коменти");
-				
+
 				dinamik_text("status_msg", "Коментраі завантажено " + koment.length + ".штук");
 
-							
+
 				startViner();
-				
+
 				//setTimeout(getViner, 4000);
 
 			} else {
@@ -327,17 +327,17 @@ if (status == null) {
 		if (message.command === "goo") {
 
 			let urll = window.location.pathname;
-			if (urll.substring(0,3) === '/p/') {
-			console.log("STARTTTTT");
-			startEngine();
-			engine = "on";
-			insertContent();
-			dinamik_text("status_msg", "Завантажуєм коментарі");
-			}else{
+			if (urll.substring(0, 3) === '/p/') {
+				console.log("STARTTTTT");
+				startEngine();
+				engine = "on";
+				insertContent();
+				dinamik_text("status_msg", "Завантажуєм коментарі");
+			} else {
 				alert('Щоб почати ви маєте відкрити пост');
 
 			};
-			
+
 			// moreComents("on");
 
 
@@ -347,24 +347,24 @@ if (status == null) {
 			console.log('Команда ресет пробую оновити преможця');
 			startMoreViner();
 			refrech = "on";
-			
 
-		}else if (message.command === "close") {
+
+		} else if (message.command === "close") {
 			RemInfoblock();
-			
+
 			//document.location.reload(true);
-			
+
 
 
 		}
 	});
 
 
-/**
-	 * Check and set a global guard variable.
-	 * If this content script is injected into the same page again,
-	 * it will do nothing next time.
-	 */
+	/**
+		 * Check and set a global guard variable.
+		 * If this content script is injected into the same page again,
+		 * it will do nothing next time.
+		 */
 	if (window.hasRun) {
 		return;
 	}
