@@ -17,7 +17,7 @@ var dialog = document.querySelectorAll('._2dDPU');
 		var viner = koment[randomInteger(1, koment.length)];
 
 		var viner_name = viner.innerText;
-		console.log(viner_name);
+		
 		var viner_coment = viner.parentElement.innerHTML;
 
 		var vinerMoreComents = [];
@@ -57,7 +57,7 @@ console.log('GEt Viner Done');
 
 		getUserInfo(viner_name, viner_coment, vinerMoreComents,"on");
 
-		//var vinerMoreComents = [];
+		
 
 	};
 
