@@ -67,6 +67,7 @@ function listenForClicks() {
 	document.querySelector("#popup-content").classList.add("hidden");
 	document.querySelector("#user_mesage").classList.add("hidden");
 	document.querySelector("#error-content").classList.remove("hidden");
+	document.querySelector("#error-content").insertAdjacentText(`${error.message}`);
 	console.error(`Помилка загрузки скрипта: ${error.message}`);
 	}
 	
