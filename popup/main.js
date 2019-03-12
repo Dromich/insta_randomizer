@@ -23,6 +23,9 @@ function listenForClicks() {
 		};
 
 		function close(tabs) {
+			refresh[0].classList.add('hidden');
+			box[0].classList.remove('hidden');
+
 			browser.tabs.sendMessage(tabs[0].id, {
 				command: "close",
 			});

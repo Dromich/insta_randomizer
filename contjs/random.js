@@ -30,7 +30,7 @@ var dialog = document.querySelectorAll('._2dDPU');
 
 		}
 console.log('GEt Viner Done');
-		getUserInfo(viner_name, viner_coment, vinerMoreComents);
+		getUserInfo(viner_name, viner_coment, vinerMoreComents,"on");
 
 	};
 
@@ -352,7 +352,7 @@ if (status == null) {
 		}else if (message.command === "close") {
 			RemInfoblock();
 			
-			document.location.reload(true);
+			//document.location.reload(true);
 			
 
 
